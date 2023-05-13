@@ -10,14 +10,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   sqflite_sqlcipher: ^2.1.1+1
   synchronized: ^3.1.0
   path: ^1.8.3
-  sqfentity_gen: '>=2.4.0 <3.0.0'
+
   sqflite_common: ^2.4.5
   sqflite_common_ffi: ^2.2.5
   meta: ^1.9.1
 
+
+  sqfentity_gen: ^2.3.0+4
+
 dependency_overrides:
- sqfentity_gen:
-   path: ../sqfentity_gen
+    sqfentity_gen:
+      path: ../sqfentity_gen

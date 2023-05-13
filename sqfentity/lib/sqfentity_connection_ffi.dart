@@ -16,13 +16,10 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-import 'dart:async' show Future;
-import 'dart:io';
-import 'package:flutter/services.dart';
-import 'package:path/path.dart';
-import 'package:sqfentity/sqfentity_connection_base.dart';
+
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:synchronized/synchronized.dart';
+import 'orm_sqfentity.dart';
 
 // BEGIN DATABASE CONNECTION
 class SqfEntityConnectionFfi extends SqfEntityConnectionBase {

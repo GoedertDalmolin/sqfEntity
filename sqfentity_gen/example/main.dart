@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sqfentity/sqfentity.dart';
-// STEP 1: import sqfentity package.
-import 'package:sqfentity_gen/sqfentity_gen.dart';
+import '../../sqfentity/lib/orm_sqfentity.dart';
 
 import 'model/model.dart'; // you do not need to import this file. Just follow next steps
-
+import 'package:sqfentity/orm_sqfentity.dart';
 // STEP 2: define your tables as shown in the example Classes below.
 
 // Define the 'TableCategory' constant as SqfEntityTable.

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sqfentity/sqfentity.dart';
-import 'package:sqfentity_gen/sqfentity_gen.dart';
+import 'package:sqfentity/orm_sqfentity.dart';
 import 'app.dart';
 import 'model/chinook.dart';
 import 'model/model.dart';
