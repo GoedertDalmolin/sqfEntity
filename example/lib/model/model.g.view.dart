@@ -224,139 +224,30 @@ class ProductAddState extends State {
   }
 
   Widget buildRowDatetime() {
-    return Row(children: <Widget>[
-      Expanded(
-        flex: 1,
-        child: TextFormField(
-          onTap: () => UITools.showDateTimePicker(context,
-              minTime: DateTime.parse('2019-01-01'),
-              maxTime: DateTime.now().add(Duration(days: 30)),
-              onConfirm: (sqfSelectedDate) {
-            txtDatetime.text = UITools.convertDate(sqfSelectedDate);
-            txtTimeForDatetime.text = UITools.convertTime(sqfSelectedDate);
-            setState(() {
-              final d = DateTime.tryParse(txtDatetime.text) ??
-                  product.datetime ??
-                  DateTime.now();
-              product.datetime = DateTime(sqfSelectedDate.year,
-                      sqfSelectedDate.month, sqfSelectedDate.day)
-                  .add(Duration(
-                      hours: d.hour, minutes: d.minute, seconds: d.second));
-            });
-          },
-              currentTime: DateTime.tryParse(txtDatetime.text) ??
-                  product.datetime ??
-                  DateTime.now()),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter Datetime';
-            }
-            return null;
-          },
-          controller: txtDatetime,
-          decoration: InputDecoration(labelText: 'Datetime'),
-        ),
-      ),
-      Expanded(
-          flex: 1,
-          child: TextFormField(
-            onTap: () => UITools.showDateTimePicker(context,
-                onConfirm: (sqfSelectedDate) {
-              txtTimeForDatetime.text = UITools.convertTime(sqfSelectedDate);
-              setState(() {
-                final d = DateTime.tryParse(txtDatetime.text) ??
-                    product.datetime ??
-                    DateTime.now();
-                product.datetime = DateTime(d.year, d.month, d.day).add(
-                    Duration(
-                        hours: sqfSelectedDate.hour,
-                        minutes: sqfSelectedDate.minute,
-                        seconds: sqfSelectedDate.second));
-                txtDatetime.text = UITools.convertDate(product.datetime!);
-              });
-            },
-                currentTime: DateTime.tryParse(
-                        '${UITools.convertDate(DateTime.now())} ${txtTimeForDatetime.text}') ??
-                    product.datetime ??
-                    DateTime.now()),
-            controller: txtTimeForDatetime,
-            decoration: InputDecoration(labelText: 'time'),
-          ))
-    ]);
+    return TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter Datetime';
+        }
+        return null;
+      },
+      controller: txtDatetime,
+      decoration: InputDecoration(labelText: 'Datetime'),
+    );
   }
 
   Widget buildRowDate() {
     return TextFormField(
-      onTap: () => UITools.showDateTimePicker(context,
-          minTime: DateTime.parse('2015-01-01'),
-          maxTime: DateTime.now().add(Duration(days: 365)),
-          onConfirm: (sqfSelectedDate) {
-        txtDate.text = UITools.convertDate(sqfSelectedDate);
-        setState(() {
-          product.date = sqfSelectedDate;
-        });
-      },
-          currentTime: DateTime.tryParse(txtDate.text) ??
-              product.date ??
-              DateTime.now()),
       controller: txtDate,
       decoration: InputDecoration(labelText: 'Date'),
     );
   }
 
   Widget buildRowDateCreated() {
-    return Row(children: <Widget>[
-      Expanded(
-        flex: 1,
-        child: TextFormField(
-          onTap: () => UITools.showDateTimePicker(context,
-              minTime: DateTime.parse('1900-01-01'),
-              onConfirm: (sqfSelectedDate) {
-            txtDateCreated.text = UITools.convertDate(sqfSelectedDate);
-            txtTimeForDateCreated.text = UITools.convertTime(sqfSelectedDate);
-            setState(() {
-              final d = DateTime.tryParse(txtDateCreated.text) ??
-                  product.dateCreated ??
-                  DateTime.now();
-              product.dateCreated = DateTime(sqfSelectedDate.year,
-                      sqfSelectedDate.month, sqfSelectedDate.day)
-                  .add(Duration(
-                      hours: d.hour, minutes: d.minute, seconds: d.second));
-            });
-          },
-              currentTime: DateTime.tryParse(txtDateCreated.text) ??
-                  product.dateCreated ??
-                  DateTime.now()),
-          controller: txtDateCreated,
-          decoration: InputDecoration(labelText: 'DateCreated'),
-        ),
-      ),
-      Expanded(
-          flex: 1,
-          child: TextFormField(
-            onTap: () => UITools.showDateTimePicker(context,
-                onConfirm: (sqfSelectedDate) {
-              txtTimeForDateCreated.text = UITools.convertTime(sqfSelectedDate);
-              setState(() {
-                final d = DateTime.tryParse(txtDateCreated.text) ??
-                    product.dateCreated ??
-                    DateTime.now();
-                product.dateCreated = DateTime(d.year, d.month, d.day).add(
-                    Duration(
-                        hours: sqfSelectedDate.hour,
-                        minutes: sqfSelectedDate.minute,
-                        seconds: sqfSelectedDate.second));
-                txtDateCreated.text = UITools.convertDate(product.dateCreated!);
-              });
-            },
-                currentTime: DateTime.tryParse(
-                        '${UITools.convertDate(DateTime.now())} ${txtTimeForDateCreated.text}') ??
-                    product.dateCreated ??
-                    DateTime.now()),
-            controller: txtTimeForDateCreated,
-            decoration: InputDecoration(labelText: 'time'),
-          ))
-    ]);
+    return TextFormField(
+      controller: txtDateCreated,
+      decoration: InputDecoration(labelText: 'DateCreated'),
+    );
   }
 
   Container saveButton() {
@@ -516,59 +407,10 @@ class CategoryAddState extends State {
   }
 
   Widget buildRowDateCreated() {
-    return Row(children: <Widget>[
-      Expanded(
-        flex: 1,
-        child: TextFormField(
-          onTap: () => UITools.showDateTimePicker(context,
-              minTime: DateTime.parse('1900-01-01'),
-              onConfirm: (sqfSelectedDate) {
-            txtDateCreated.text = UITools.convertDate(sqfSelectedDate);
-            txtTimeForDateCreated.text = UITools.convertTime(sqfSelectedDate);
-            setState(() {
-              final d = DateTime.tryParse(txtDateCreated.text) ??
-                  category.dateCreated ??
-                  DateTime.now();
-              category.dateCreated = DateTime(sqfSelectedDate.year,
-                      sqfSelectedDate.month, sqfSelectedDate.day)
-                  .add(Duration(
-                      hours: d.hour, minutes: d.minute, seconds: d.second));
-            });
-          },
-              currentTime: DateTime.tryParse(txtDateCreated.text) ??
-                  category.dateCreated ??
-                  DateTime.now()),
-          controller: txtDateCreated,
-          decoration: InputDecoration(labelText: 'DateCreated'),
-        ),
-      ),
-      Expanded(
-          flex: 1,
-          child: TextFormField(
-            onTap: () => UITools.showDateTimePicker(context,
-                onConfirm: (sqfSelectedDate) {
-              txtTimeForDateCreated.text = UITools.convertTime(sqfSelectedDate);
-              setState(() {
-                final d = DateTime.tryParse(txtDateCreated.text) ??
-                    category.dateCreated ??
-                    DateTime.now();
-                category.dateCreated = DateTime(d.year, d.month, d.day).add(
-                    Duration(
-                        hours: sqfSelectedDate.hour,
-                        minutes: sqfSelectedDate.minute,
-                        seconds: sqfSelectedDate.second));
-                txtDateCreated.text =
-                    UITools.convertDate(category.dateCreated!);
-              });
-            },
-                currentTime: DateTime.tryParse(
-                        '${UITools.convertDate(DateTime.now())} ${txtTimeForDateCreated.text}') ??
-                    category.dateCreated ??
-                    DateTime.now()),
-            controller: txtTimeForDateCreated,
-            decoration: InputDecoration(labelText: 'time'),
-          ))
-    ]);
+    return TextFormField(
+      controller: txtDateCreated,
+      decoration: InputDecoration(labelText: 'DateCreated'),
+    );
   }
 
   Container saveButton() {
@@ -737,58 +579,10 @@ class TodoAddState extends State {
   }
 
   Widget buildRowDateCreated() {
-    return Row(children: <Widget>[
-      Expanded(
-        flex: 1,
-        child: TextFormField(
-          onTap: () => UITools.showDateTimePicker(context,
-              minTime: DateTime.parse('1900-01-01'),
-              onConfirm: (sqfSelectedDate) {
-            txtDateCreated.text = UITools.convertDate(sqfSelectedDate);
-            txtTimeForDateCreated.text = UITools.convertTime(sqfSelectedDate);
-            setState(() {
-              final d = DateTime.tryParse(txtDateCreated.text) ??
-                  todos.dateCreated ??
-                  DateTime.now();
-              todos.dateCreated = DateTime(sqfSelectedDate.year,
-                      sqfSelectedDate.month, sqfSelectedDate.day)
-                  .add(Duration(
-                      hours: d.hour, minutes: d.minute, seconds: d.second));
-            });
-          },
-              currentTime: DateTime.tryParse(txtDateCreated.text) ??
-                  todos.dateCreated ??
-                  DateTime.now()),
-          controller: txtDateCreated,
-          decoration: InputDecoration(labelText: 'DateCreated'),
-        ),
-      ),
-      Expanded(
-          flex: 1,
-          child: TextFormField(
-            onTap: () => UITools.showDateTimePicker(context,
-                onConfirm: (sqfSelectedDate) {
-              txtTimeForDateCreated.text = UITools.convertTime(sqfSelectedDate);
-              setState(() {
-                final d = DateTime.tryParse(txtDateCreated.text) ??
-                    todos.dateCreated ??
-                    DateTime.now();
-                todos.dateCreated = DateTime(d.year, d.month, d.day).add(
-                    Duration(
-                        hours: sqfSelectedDate.hour,
-                        minutes: sqfSelectedDate.minute,
-                        seconds: sqfSelectedDate.second));
-                txtDateCreated.text = UITools.convertDate(todos.dateCreated!);
-              });
-            },
-                currentTime: DateTime.tryParse(
-                        '${UITools.convertDate(DateTime.now())} ${txtTimeForDateCreated.text}') ??
-                    todos.dateCreated ??
-                    DateTime.now()),
-            controller: txtTimeForDateCreated,
-            decoration: InputDecoration(labelText: 'time'),
-          ))
-    ]);
+    return TextFormField(
+      controller: txtDateCreated,
+      decoration: InputDecoration(labelText: 'DateCreated'),
+    );
   }
 
   Container saveButton() {

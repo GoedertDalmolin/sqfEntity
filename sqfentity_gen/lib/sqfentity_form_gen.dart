@@ -450,57 +450,7 @@ class ${modelName}AddState extends State {
   }
 ''');
         return retVal.toString();
-      case DbType.date:
-        retVal.writeln('return TextFormField(');
-        retVal.writeln(
-            '''onTap: () => UITools.showDateTimePicker(context
-          ${_getNullableValueField(field.minValue, 'minTime')}
-          ${_getNullableValueField(field.maxValue, 'maxTime')}
-          , onConfirm: (sqfSelectedDate) {
-        txt$ccName.text = UITools.convertDate(sqfSelectedDate);
-        setState(() {
-          $tablename.${field.fieldName} = sqfSelectedDate;
-        });
-      }, currentTime: DateTime.tryParse(txt$ccName.text) ?? $tablename.${field.fieldName} ?? DateTime.now()),
-      ''');
-        break;
-      case DbType.datetime:
-      case DbType.datetimeUtc:
-        retVal.writeln(
-            '''return Row(children: <Widget>[Expanded(flex: 1, child: TextFormField(onTap: () => UITools.showDateTimePicker(context
-          ${_getNullableValueField(field.minValue, 'minTime')}
-          ${_getNullableValueField(field.maxValue, 'maxTime')}
-          , onConfirm: (sqfSelectedDate) {
-        txt$ccName.text = UITools.convertDate(sqfSelectedDate);
-        txtTimeFor$ccName.text = UITools.convertTime(sqfSelectedDate);
-            setState(() {
-                final d = DateTime.tryParse(txt$ccName.text) ?? $tablename.${field.fieldName} ?? DateTime.now();
-                $tablename.${field.fieldName} = DateTime(sqfSelectedDate.year, sqfSelectedDate.month, sqfSelectedDate.day).add(Duration(hours: d.hour,minutes: d.minute,seconds: d.second));
-            });
-          },
-              currentTime: DateTime.tryParse(txt$ccName.text) ?? $tablename.${field.fieldName} ?? DateTime.now()),
-          ${field.isNotNull != null && field.isNotNull! ? 'validator: (value) { if (value == null || value.isEmpty) { return \'Please enter $ccName\'; } return null;},' : ''}
-          controller: txt$ccName,
-          decoration: InputDecoration(labelText: '$ccName'),
-        ),
-      ),
-      Expanded(flex: 1,child: TextFormField(onTap: () => UITools.showDateTimePicker(context,
-      onConfirm: (sqfSelectedDate) {
-              txtTimeFor$ccName.text = UITools.convertTime(sqfSelectedDate);
-              setState(() {
-                final d = DateTime.tryParse(txt$ccName.text) ?? $tablename.${field.fieldName} ?? DateTime.now();
-                $tablename.${field.fieldName} = DateTime(d.year, d.month, d.day).add(Duration(hours: sqfSelectedDate.hour,minutes: sqfSelectedDate.minute,seconds: sqfSelectedDate.second));
-                txt$ccName.text = UITools.convertDate($tablename.${field.fieldName}!);
-              });
-            },
-                currentTime: DateTime.tryParse('\${UITools.convertDate(DateTime.now())} \${txtTimeFor$ccName.text}') ?? $tablename.${field.fieldName} ?? DateTime.now()),
-               
-            controller: txtTimeFor$ccName,
-            decoration: InputDecoration(labelText: 'time'),
-          ))
-    ]);
-}''');
-        return retVal.toString();
+
       default:
         if ((field.isNotNull != null && field.isNotNull!)) {
           retVal.writeln('''return TextFormField(

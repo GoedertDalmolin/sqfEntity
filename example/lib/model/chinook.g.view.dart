@@ -663,113 +663,17 @@ class EmployeeAddState extends State {
   }
 
   Widget buildRowBirthDate() {
-    return Row(children: <Widget>[
-      Expanded(
-        flex: 1,
-        child: TextFormField(
-          onTap: () => UITools.showDateTimePicker(context,
-              minTime: DateTime.parse('1900-01-01'),
-              onConfirm: (sqfSelectedDate) {
-            txtBirthDate.text = UITools.convertDate(sqfSelectedDate);
-            txtTimeForBirthDate.text = UITools.convertTime(sqfSelectedDate);
-            setState(() {
-              final d = DateTime.tryParse(txtBirthDate.text) ??
-                  employee.BirthDate ??
-                  DateTime.now();
-              employee.BirthDate = DateTime(sqfSelectedDate.year,
-                      sqfSelectedDate.month, sqfSelectedDate.day)
-                  .add(Duration(
-                      hours: d.hour, minutes: d.minute, seconds: d.second));
-            });
-          },
-              currentTime: DateTime.tryParse(txtBirthDate.text) ??
-                  employee.BirthDate ??
-                  DateTime.now()),
-          controller: txtBirthDate,
-          decoration: InputDecoration(labelText: 'BirthDate'),
-        ),
-      ),
-      Expanded(
-          flex: 1,
-          child: TextFormField(
-            onTap: () => UITools.showDateTimePicker(context,
-                onConfirm: (sqfSelectedDate) {
-              txtTimeForBirthDate.text = UITools.convertTime(sqfSelectedDate);
-              setState(() {
-                final d = DateTime.tryParse(txtBirthDate.text) ??
-                    employee.BirthDate ??
-                    DateTime.now();
-                employee.BirthDate = DateTime(d.year, d.month, d.day).add(
-                    Duration(
-                        hours: sqfSelectedDate.hour,
-                        minutes: sqfSelectedDate.minute,
-                        seconds: sqfSelectedDate.second));
-                txtBirthDate.text = UITools.convertDate(employee.BirthDate!);
-              });
-            },
-                currentTime: DateTime.tryParse(
-                        '${UITools.convertDate(DateTime.now())} ${txtTimeForBirthDate.text}') ??
-                    employee.BirthDate ??
-                    DateTime.now()),
-            controller: txtTimeForBirthDate,
-            decoration: InputDecoration(labelText: 'time'),
-          ))
-    ]);
+    return TextFormField(
+      controller: txtBirthDate,
+      decoration: InputDecoration(labelText: 'BirthDate'),
+    );
   }
 
   Widget buildRowHireDate() {
-    return Row(children: <Widget>[
-      Expanded(
-        flex: 1,
-        child: TextFormField(
-          onTap: () => UITools.showDateTimePicker(context,
-              minTime: DateTime.parse('1900-01-01'),
-              onConfirm: (sqfSelectedDate) {
-            txtHireDate.text = UITools.convertDate(sqfSelectedDate);
-            txtTimeForHireDate.text = UITools.convertTime(sqfSelectedDate);
-            setState(() {
-              final d = DateTime.tryParse(txtHireDate.text) ??
-                  employee.HireDate ??
-                  DateTime.now();
-              employee.HireDate = DateTime(sqfSelectedDate.year,
-                      sqfSelectedDate.month, sqfSelectedDate.day)
-                  .add(Duration(
-                      hours: d.hour, minutes: d.minute, seconds: d.second));
-            });
-          },
-              currentTime: DateTime.tryParse(txtHireDate.text) ??
-                  employee.HireDate ??
-                  DateTime.now()),
-          controller: txtHireDate,
-          decoration: InputDecoration(labelText: 'HireDate'),
-        ),
-      ),
-      Expanded(
-          flex: 1,
-          child: TextFormField(
-            onTap: () => UITools.showDateTimePicker(context,
-                onConfirm: (sqfSelectedDate) {
-              txtTimeForHireDate.text = UITools.convertTime(sqfSelectedDate);
-              setState(() {
-                final d = DateTime.tryParse(txtHireDate.text) ??
-                    employee.HireDate ??
-                    DateTime.now();
-                employee.HireDate = DateTime(d.year, d.month, d.day).add(
-                    Duration(
-                        hours: sqfSelectedDate.hour,
-                        minutes: sqfSelectedDate.minute,
-                        seconds: sqfSelectedDate.second));
-                txtHireDate.text = UITools.convertDate(employee.HireDate!);
-              });
-            },
-                currentTime: DateTime.tryParse(
-                        '${UITools.convertDate(DateTime.now())} ${txtTimeForHireDate.text}') ??
-                    employee.HireDate ??
-                    DateTime.now()),
-            controller: txtTimeForHireDate,
-            decoration: InputDecoration(labelText: 'time'),
-          ))
-    ]);
+    return TextFormField(
+      controller: txtHireDate,
+      decoration: InputDecoration(labelText: 'HireDate'),
+    );
   }
 
   Widget buildRowAddress() {
@@ -1118,58 +1022,10 @@ class InvoiceAddState extends State {
   }
 
   Widget buildRowInvoiceDate() {
-    return Row(children: <Widget>[
-      Expanded(
-        flex: 1,
-        child: TextFormField(
-          onTap: () => UITools.showDateTimePicker(context,
-              minTime: DateTime.parse('1900-01-01'),
-              onConfirm: (sqfSelectedDate) {
-            txtInvoiceDate.text = UITools.convertDate(sqfSelectedDate);
-            txtTimeForInvoiceDate.text = UITools.convertTime(sqfSelectedDate);
-            setState(() {
-              final d = DateTime.tryParse(txtInvoiceDate.text) ??
-                  invoice.InvoiceDate ??
-                  DateTime.now();
-              invoice.InvoiceDate = DateTime(sqfSelectedDate.year,
-                      sqfSelectedDate.month, sqfSelectedDate.day)
-                  .add(Duration(
-                      hours: d.hour, minutes: d.minute, seconds: d.second));
-            });
-          },
-              currentTime: DateTime.tryParse(txtInvoiceDate.text) ??
-                  invoice.InvoiceDate ??
-                  DateTime.now()),
-          controller: txtInvoiceDate,
-          decoration: InputDecoration(labelText: 'InvoiceDate'),
-        ),
-      ),
-      Expanded(
-          flex: 1,
-          child: TextFormField(
-            onTap: () => UITools.showDateTimePicker(context,
-                onConfirm: (sqfSelectedDate) {
-              txtTimeForInvoiceDate.text = UITools.convertTime(sqfSelectedDate);
-              setState(() {
-                final d = DateTime.tryParse(txtInvoiceDate.text) ??
-                    invoice.InvoiceDate ??
-                    DateTime.now();
-                invoice.InvoiceDate = DateTime(d.year, d.month, d.day).add(
-                    Duration(
-                        hours: sqfSelectedDate.hour,
-                        minutes: sqfSelectedDate.minute,
-                        seconds: sqfSelectedDate.second));
-                txtInvoiceDate.text = UITools.convertDate(invoice.InvoiceDate!);
-              });
-            },
-                currentTime: DateTime.tryParse(
-                        '${UITools.convertDate(DateTime.now())} ${txtTimeForInvoiceDate.text}') ??
-                    invoice.InvoiceDate ??
-                    DateTime.now()),
-            controller: txtTimeForInvoiceDate,
-            decoration: InputDecoration(labelText: 'time'),
-          ))
-    ]);
+    return TextFormField(
+      controller: txtInvoiceDate,
+      decoration: InputDecoration(labelText: 'InvoiceDate'),
+    );
   }
 
   Widget buildRowBillingAddress() {

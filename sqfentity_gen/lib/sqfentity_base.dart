@@ -2103,11 +2103,7 @@ Future<BoolResult> delete([bool hardDelete=false]) async {
 
     final data = await ${toPluralLowerName(_table._modelLowerCase)}Future;
     final int count = data.length;
-    final List<DropdownMenuItem<${_table.modelName}>> items = []
-    ..add(DropdownMenuItem(
-      value: ${_table.modelName}(),
-      child: Text('-'),
-    ));
+    final List<DropdownMenuItem<${_table.modelName}>> items = [];
     for (int i = 0; i < count; i++) {
       items.add(
         DropdownMenuItem(
@@ -2131,11 +2127,7 @@ Future<BoolResult> delete([bool hardDelete=false]) async {
 
     final data = await ${toPluralLowerName(_table._modelLowerCase)}Future;
     final int count = data.length;
-    final List<DropdownMenuItem<${_table.primaryKeyTypes[0]}>> items = []
-    ..add(DropdownMenuItem(
-      value: ${_table.primaryKeyTypes[0] == 'int' ? '0' : '\'0\''},
-      child: Text('-'),
-    ));
+    final List<DropdownMenuItem<${_table.primaryKeyTypes[0]}>> items = [];
     for (int i = 0; i < count; i++) {
       items.add(
         DropdownMenuItem(

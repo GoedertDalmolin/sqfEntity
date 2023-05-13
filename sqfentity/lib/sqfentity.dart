@@ -20,12 +20,7 @@ import 'dart:async' show Future;
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/services.dart';
-import 'package:sqfentity/sqfentity_connection.dart';
-import 'package:sqfentity/sqfentity_connection_base.dart';
-import 'package:sqfentity/sqfentity_connection_ffi.dart';
-import 'package:sqfentity_gen/sqfentity_gen.dart';
-//import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_sqlcipher/sqflite.dart';
+import 'orm_sqfentity.dart';
 
 // BEGIN DATABASE PROVIDER
 

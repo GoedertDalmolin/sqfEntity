@@ -587,7 +587,6 @@ class Product extends TableBase {
               obj.plCategory ?? await obj.getCategory(loadParents: loadParents);
         }
       } // END RELATIONSHIPS PRELOAD
-
     } else {
       obj = null;
     }
@@ -1103,7 +1102,6 @@ class ProductFilterBuilder extends ConjunctionBase {
               obj.plCategory ?? await obj.getCategory(loadParents: loadParents);
         }
       } // END RELATIONSHIPS PRELOAD
-
     } else {
       obj = null;
     }
@@ -1210,10 +1208,7 @@ class ProductFilterBuilder extends ConjunctionBase {
 
     final data = await productsFuture;
     final int count = data.length;
-    final List<DropdownMenuItem<Product>> items = []..add(DropdownMenuItem(
-        value: Product(),
-        child: Text('-'),
-      ));
+    final List<DropdownMenuItem<Product>> items = [];
     for (int i = 0; i < count; i++) {
       items.add(
         DropdownMenuItem(
@@ -1239,10 +1234,7 @@ class ProductFilterBuilder extends ConjunctionBase {
 
     final data = await productsFuture;
     final int count = data.length;
-    final List<DropdownMenuItem<int>> items = []..add(DropdownMenuItem(
-        value: 0,
-        child: Text('-'),
-      ));
+    final List<DropdownMenuItem<int>> items = [];
     for (int i = 0; i < count; i++) {
       items.add(
         DropdownMenuItem(
@@ -1673,7 +1665,6 @@ class Category extends TableBase {
                       loadParents: false /*, loadedFields:_loadedFields*/);
         }
       } // END RELATIONSHIPS PRELOAD CHILD
-
     } else {
       obj = null;
     }
@@ -2142,7 +2133,6 @@ class CategoryFilterBuilder extends ConjunctionBase {
                       loadParents: false /*, loadedFields:_loadedFields*/);
         }
       } // END RELATIONSHIPS PRELOAD CHILD
-
     } else {
       obj = null;
     }
@@ -2249,10 +2239,7 @@ class CategoryFilterBuilder extends ConjunctionBase {
 
     final data = await categoriesFuture;
     final int count = data.length;
-    final List<DropdownMenuItem<Category>> items = []..add(DropdownMenuItem(
-        value: Category(),
-        child: Text('-'),
-      ));
+    final List<DropdownMenuItem<Category>> items = [];
     for (int i = 0; i < count; i++) {
       items.add(
         DropdownMenuItem(
@@ -2278,10 +2265,7 @@ class CategoryFilterBuilder extends ConjunctionBase {
 
     final data = await categoriesFuture;
     final int count = data.length;
-    final List<DropdownMenuItem<int>> items = []..add(DropdownMenuItem(
-        value: 0,
-        child: Text('-'),
-      ));
+    final List<DropdownMenuItem<int>> items = [];
     for (int i = 0; i < count; i++) {
       items.add(
         DropdownMenuItem(
@@ -3174,10 +3158,7 @@ class TodoFilterBuilder extends ConjunctionBase {
 
     final data = await todosFuture;
     final int count = data.length;
-    final List<DropdownMenuItem<Todo>> items = []..add(DropdownMenuItem(
-        value: Todo(),
-        child: Text('-'),
-      ));
+    final List<DropdownMenuItem<Todo>> items = [];
     for (int i = 0; i < count; i++) {
       items.add(
         DropdownMenuItem(
@@ -3203,10 +3184,7 @@ class TodoFilterBuilder extends ConjunctionBase {
 
     final data = await todosFuture;
     final int count = data.length;
-    final List<DropdownMenuItem<int>> items = []..add(DropdownMenuItem(
-        value: 0,
-        child: Text('-'),
-      ));
+    final List<DropdownMenuItem<int>> items = [];
     for (int i = 0; i < count; i++) {
       items.add(
         DropdownMenuItem(
