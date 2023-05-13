@@ -4,7 +4,7 @@ description: example SQFEntity Project
 version: 2.2.0+12
 
 environment:
-  sdk: ">=2.12.2 <3.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
