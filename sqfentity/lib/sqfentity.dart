@@ -17,8 +17,17 @@
 //    limitations under the License.
 
 
+import 'dart:async' show Future;
+import 'dart:convert';
+import 'dart:io';
 
-import 'orm_sqfentity.dart';
+import 'package:flutter/services.dart';
+import 'package:sqfentity_gen/sqfentity_gen.dart';
+import 'package:sqflite_sqlcipher/sqflite.dart';
+
+import 'sqfentity_connection.dart';
+import 'sqfentity_connection_base.dart';
+import 'sqfentity_connection_ffi.dart';
 
 // BEGIN DATABASE PROVIDER
 

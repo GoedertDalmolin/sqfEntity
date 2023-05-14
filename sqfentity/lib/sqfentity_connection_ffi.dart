@@ -10,6 +10,11 @@
 
 //     http://www.apache.org/licenses/LICENSE-2.0
 
+import 'dart:async' show Future;
+import 'dart:io';
+
+import 'package:flutter/services.dart';
+import 'package:path/path.dart';
 //    Unless required by applicable law or agreed to in writing, software
 //    distributed under the License is distributed on an 'AS IS' BASIS,
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,8 +24,8 @@
 
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:synchronized/synchronized.dart';
-import 'orm_sqfentity.dart';
 
+import 'sqfentity_connection_base.dart';
 // BEGIN DATABASE CONNECTION
 class SqfEntityConnectionFfi extends SqfEntityConnectionBase {
   SqfEntityConnectionFfi(SqfEntityConnection? connection) : super(connection);
