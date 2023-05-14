@@ -1372,7 +1372,7 @@ class SqfEntityObjectBuilder {
       return '''@override
   Future<BoolResult> recover([bool recoverChilds = true]) {
     // not implemented because:
-     final msg = 'set useSoftDeleting:true in the table definition of [${_table.modelName}] to use this feature';
+     const msg = 'set useSoftDeleting:true in the table definition of [${_table.modelName}] to use this feature';
     throw UnimplementedError(msg);
   }
       ''';
@@ -2147,13 +2147,13 @@ Future<BoolResult> delete([bool hardDelete=false]) async {
   /// <returns>List<String>
   @override
   Map<String,dynamic> toListPrimaryKeySQL([bool buildParams = true]) {
-   final Map<String,dynamic> _retVal = <String,dynamic>{};
+   final Map<String,dynamic> retVal = <String,dynamic>{};
     if (buildParams) {
       buildParameters();
     }
-    _retVal['sql'] = 'SELECT `${_table.primaryKeyNames.join('`')}` FROM ${_table.tableName} WHERE \${qparams.whereString}';
-    _retVal['args'] = qparams.whereArguments;
-    return _retVal;
+    retVal['sql'] = 'SELECT `${_table.primaryKeyNames.join('`')}` FROM ${_table.tableName} WHERE \${qparams.whereString}';
+    retVal['args'] = qparams.whereArguments;
+    return retVal;
   }
   ${_table.primaryKeyNames.length > 1 ? '''/// This method returns Primary Key List<${_table.primaryKeyNames.join(',')}> [${_table.modelName}]
   /// <returns>List<${_table.primaryKeyNames.join(',')}>
